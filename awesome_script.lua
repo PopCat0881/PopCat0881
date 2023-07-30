@@ -1,7 +1,7 @@
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 local Window = Rayfield:CreateWindow({
-   Name = "Slap battles hub that exists",
-   LoadingTitle = "Slap battles hub that exists",
+   Name = "Poor gloves hub",
+   LoadingTitle = "Poor gloves hub",
    LoadingSubtitle = "by balls",
    ConfigurationSaving = {
       Enabled = true,
@@ -9,13 +9,13 @@ local Window = Rayfield:CreateWindow({
       FileName = "Big Hub"
    },
    Discord = {
-      Enabled = false,
+      Enabled = true,
       Invite = "https://discord.gg/rJWwxQgYmS", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ABCD would be ABCD
       RememberJoins = true -- Set this to false to make them join the discord every time they load it up
    },
-   KeySystem = false, -- Set this to true to use our key system
+   KeySystem = true, -- Set this to true to use our key system
    KeySettings = {
-      Title = "Slap battles hub that exists",
+      Title = "Poor gloves hub",
       Subtitle = "Key System",
       Note = "key: guy",
       FileName = "Key", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
@@ -57,8 +57,82 @@ local Button2 = Tab:CreateButton({
    end,
 })
 local Button3 = Tab:CreateButton({
-   Name = "Testing server Freecam",
+   Name = "Freecam",
    Callback = function()
    loadstring(game:HttpGet("https://raw.githubusercontent.com/ionlyusegithubformcmods/1-Line-Scripts/main/SB%20Freecam"))()
+   end,
+})
+local Toggle = Tab:CreateToggle({
+   Name = "Rhythm explosion spam (Works with all gloves)",
+   CurrentValue = false,
+   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+   _G.RhythmSpam = Value
+while _G.RhythmSpam do
+game:GetService("ReplicatedStorage").rhythmevent:FireServer("AoeExplosion",0)
+task.wait()
+end
+   end,
+})
+local Toggle2 = Tab:CreateToggle({
+   Name = "Rojo spam (Works with all gloves)",
+   CurrentValue = false,
+   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+   if Person == nil then
+Person = game.Players.LocalPlayer.Name
+end
+_G.RojoSpam = Value
+while _G.RojoSpam do
+game:GetService("ReplicatedStorage"):WaitForChild("RojoAbility"):FireServer("Release", {game.Players[Person].Character.HumanoidRootPart.CFrame})
+task.wait(2)
+end
+   end,
+})
+local Toggle3 = Tab:CreateToggle({
+   Name = "Anti void",
+   CurrentValue = false,
+   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+   game.Workspace.dedBarrier.CanCollide = Value
+   game.Workspace.TAntiVoid.CanCollide = Value
+   end,
+})
+local Toggle4 = Tab:CreateToggle({
+   Name = "Anti brazil portal",
+   CurrentValue = false,
+   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+   game.Workspace.Lobby.brazil.portal.CanTouch = Value
+   end,
+})
+local Button4 = Tab:CreateButton({
+   Name = "Inf yield",
+   Callback = function()
+   loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+   end,
+})
+local Toggle5 = Tab:CreateToggle({
+   Name = "Brick spam",
+   CurrentValue = false,
+   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+   _G.BrickSpam = Value
+   while _G.BrickSpam do
+      game:GetService("ReplicatedStorage").lbrick:FireServer()
+      wait(1.1)
+   end
+   end,
+})
+local Toggle5 = Tab:CreateToggle({
+   Name = "Slow Brick spam (Use if high ping)",
+   CurrentValue = false,
+   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+   _G.BrickSpam = Value
+   while _G.BrickSpam do
+      game:GetService("ReplicatedStorage").lbrick:FireServer()
+      wait(5.5)
+   end
    end,
 })
