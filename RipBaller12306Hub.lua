@@ -109,20 +109,6 @@ Tab:AddToggle({
 		end
 	end    
 })
-Tab:AddToggle({
-	Name = "Rojo spam (Works with any glove)",
-	Default = false,
-	Callback = function(Value)
-		if Person == nil then
-Person = game.Players.LocalPlayer.Name
-end
-_G.RojoSpam = Value
-while _G.RojoSpam do
-game:GetService("ReplicatedStorage"):WaitForChild("RojoAbility"):FireServer("Release", {game.Players.[Person].Character.HumanoidRootPart.CFrame})
-task.wait(0.5)
-end
-	end    
-})
 Tab:AddButton({
 	Name = "Equip default",
 	Callback = function()
