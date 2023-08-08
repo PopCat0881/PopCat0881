@@ -221,3 +221,15 @@ Tab:AddDropdown({
 		end
 	end
 })
+Tab:AddSlider({
+	Name = "Walkspeed",
+	Min = 20,
+	Max = 50,
+	Default = 20,
+	Color = Color3.fromRGB(32,178,170),
+	Increment = 1,
+	ValueName = "Speed",
+	Callback = function(Value)
+		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+	end    
+})
