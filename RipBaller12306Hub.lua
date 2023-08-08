@@ -118,7 +118,7 @@ Person = game.Players.LocalPlayer.Name
 end
 _G.RojoSpam = Value
 while _G.RojoSpam do
-game:GetService("ReplicatedStorage"):WaitForChild("RojoAbility"):FireServer("Release", {game.Players.White_Moon27TR.Character.HumanoidRootPart.CFrame})
+game:GetService("ReplicatedStorage"):WaitForChild("RojoAbility"):FireServer("Release", {game.Players.[Person].Character.HumanoidRootPart.CFrame})
 task.wait(0.5)
 end
 	end    
