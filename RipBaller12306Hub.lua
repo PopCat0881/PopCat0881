@@ -109,6 +109,20 @@ Tab:AddToggle({
 		end
 	end    
 })
+Tab:AddToggle({
+	Name = "Rojo spam (Works with any glove)",
+	Default = false,
+	Callback = function(Value)
+		if Person == nil then
+Person = game.Players.LocalPlayer.Name
+end
+_G.RojoSpam = Value
+while _G.RojoSpam do
+game:GetService("ReplicatedStorage"):WaitForChild("RojoAbility"):FireServer("Release", {game.Players.White_Moon27TR.Character.HumanoidRootPart.CFrame})
+task.wait(0.5)
+end
+	end    
+})
 Tab:AddButton({
 	Name = "Equip default",
 	Callback = function()
@@ -159,17 +173,6 @@ Tab:AddToggle({
 		end
 	end    
 })
-Tab:AddToggle({
-	Name = "Get tycoon (Turn off when u got)",
-	Default = false,
-	Callback = function(Value)
-		_G.GetTycoon = Value
-		while _G.GetTycoon do
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Arena.Plate.CFrame
-			wait(0.5)
-		end
-	end    
-})
 Tab:AddButton({
 	Name = "Destroy GUI",
 	Callback = function()
@@ -183,15 +186,38 @@ Tab:AddButton({
   	end    
 })
 Tab:AddButton({
-	Name = "Join arena",
+	Name = "Teleport to arena",
 	Callback = function()
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Lobby.Teleport1.CFrame
+      		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Lobby.Teleport1.CFrame
   	end    
+})
+Tab:AddSlider({
+	Name = "Walkspeed",
+	Min = 20,
+	Max = 50,
+	Default = 20,
+	Color = Color3.fromRGB(32,178,170),
+	Increment = 1,
+	ValueName = "Speed",
+	Callback = function(Value)
+		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+	end    
+})
+Tab:AddButton({
+	Name = "Make slap royale portal teleport to testing server",
+	Callback = function()
+	   game.Workspace.Lobby.SRInfo.Text.SurfaceGui.TextLabel.Text = "happymod required to join"
+	   game.Workspace.Lobby.Teleport4.BillboardGui.TextLabel.Text = "TESTING PLACE"
+	   game.Workspace.Lobby.Teleport4.teleport:Destroy()
+	   game.Workspace.Lobby.Teleport4.Touched:Connect(function()
+	      game:GetService("TeleportService"):Teleport(9020359053)
+	   end)
+    end    
 })
 Tab:AddDropdown({
     Name = "Godmode (Use in lobby)",
-	Default = "None",
-	Options = {"Off", "On", "None"},
+	Default = "Off",
+	Options = {"Off", "On"},
 	Callback = function(Value)
 		if Value == "Off" then
            game.Players.LocalPlayer.Character.Humanoid.Health = 0
@@ -206,16 +232,4 @@ Tab:AddDropdown({
 		   game.Workspace.Arena.CubeOfDeathArea["the cube of death(i heard it kills)"].CanTouch = false
 		end
 	end
-})
-Tab:AddSlider({
-	Name = "Walkspeed",
-	Min = 20,
-	Max = 50,
-	Default = 20,
-	Color = Color3.fromRGB(32,178,170),
-	Increment = 1,
-	ValueName = "Speed",
-	Callback = function(Value)
-		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
-	end    
 })
