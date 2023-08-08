@@ -233,3 +233,23 @@ Tab:AddSlider({
 		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
 	end    
 })
+Tab:AddToggle({
+                    Name = "Slap Aura",
+                    Default = false,
+                    Callback = function(Value)
+SlapAura = Value
+                while SlapAura do
+for i,v in pairs(game.Players:GetChildren()) do
+                    if v ~= game.Players.LocalPlayer and game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") and v.Character then
+if v.Character:FindFirstChild("entered") and v.Character:FindFirstChild("HumanoidRootPart") then
+Magnitude = (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.Character.HumanoidRootPart.Position).Magnitude
+                        if 25 >= Magnitude then
+game.ReplicatedStorage.KSHit:FireServer(v.Character:WaitForChild("Head"))
+                    end
+end
+end
+                end
+task.wait()
+end
+end
+                })
