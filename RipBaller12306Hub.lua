@@ -1,235 +1,142 @@
-local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+if not game:IsLoaded() then
+    game.Loaded:Wait()
+end
 
-local Window = OrionLib:MakeWindow({Name = "rip_baller12306's hub", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionGlovesHub"})
-OrionLib:MakeNotification({
-	Name = "rip_baller12306",
-	Content = "thanks for executing my script",
-	Image = "rbxassetid://4483345998",
-	Time = 5
-})
-local Tab = Window:MakeTab({
-	Name = "Main",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
-})
-local Section = Tab:AddSection({
-	Name = "Main"
-})
-Tab:AddButton({
-	Name = "Make the glove black (Works only with default)",
-	Callback = function()
-      		game.Players.LocalPlayer.Character.Default.Glove.Color = Color3.fromRGB(000, 000, 000)
-  	end    
-})
-Tab:AddButton({
-	Name = "Turn glove into a block (Works only with default)",
-	Callback = function()
-      		game.Players.LocalPlayer.Character.Default.Glove.Mesh:Destroy()
-  	end    
-})
-Tab:AddToggle({
-	Name = "Auto slap (For default)",
-	Default = false,
-	Callback = function(Value)
-		_G.SlapAura = Value
-		while _G.SlapAura do
-		   game.Players.LocalPlayer.Character.Default:Activate()
-		   wait(0.3)
-		end
-	end    
-})
-Tab:AddToggle({
-	Name = "Auto slap (For God's hand)",
-	Default = false,
-	Callback = function(Value)
-		_G.SlapAura = Value
-		while _G.SlapAura do
-		   game.Players.LocalPlayer.Character["God's hand"]:Activate()
-		   wait(0.1)
-		end
-	end    
-})
-Tab:AddToggle({
-	Name = "Auto slap (For OVERKILL)",
-	Default = false,
-	Callback = function(Value)
-		_G.SlapAura = Value
-		while _G.SlapAura do
-		   game.Players.LocalPlayer.Character.OVERKILL:Activate()
-		   wait(0.1)
-		end
-	end    
-})
-Tab:AddButton({
-	Name = "Turn on anti void",
-	Default = false,
-	Callback = function()
-      		game.Workspace.dedBarrier.CanCollide = true
-            game.Workspace.TAntiVoid.CanCollide = true
-  	end    
-})
-Tab:AddButton({
-	Name = "Turn off anti void",
-	Default = false,
-	Callback = function()
-      		game.Workspace.dedBarrier.CanCollide = false
-            game.Workspace.TAntiVoid.CanCollide = false
-  	end    
-})
-Tab:AddToggle({
-	Name = "Rhythm explosion spam (Works with any glove)",
-	Default = false,
-	Callback = function(Value)
-		_G.RhythmSpam = Value
-		while _G.RhythmSpam do
-		   game:GetService("ReplicatedStorage").rhythmevent:FireServer("AoeExplosion",3)
-           task.wait()
-		end
-	end    
-})
-Tab:AddToggle({
-	Name = "Brick spam",
-	Default = false,
-	Callback = function(Value)
-		_G.BrickSpam = Value
-		while _G.BrickSpam do
-		   game:GetService("ReplicatedStorage").lbrick:FireServer()
-		   task.wait(1.1)
-		end
-	end    
-})
-Tab:AddToggle({
-	Name = "Slow Brick spam (Use if high ping)",
-	Default = false,
-	Callback = function(Value)
-		_G.SlowBrickSpam = Value
-		while _G.SlowBrickSpam do
-		   game:GetService("ReplicatedStorage").lbrick:FireServer()
-		   task.wait(5.1)
-		end
-	end    
-})
-Tab:AddToggle({
-	Name = "Rojo spam (Works with any glove)",
-	Default = false,
-	Callback = function(Value)
-		if Person == nil then
-Person = game.Players.LocalPlayer.Name
-end
-_G.RojoSpam = Value
-while _G.RojoSpam do
-game:GetService("ReplicatedStorage"):WaitForChild("RojoAbility"):FireServer("Release", {game.Players.White_Moon27TR.Character.HumanoidRootPart.CFrame})
-task.wait(0.5)
-end
-	end    
-})
-Tab:AddButton({
-	Name = "Equip default",
-	Callback = function()
-      		fireclickdetector(game.Workspace.Lobby.Default.ClickDetector)
-  	end    
-})
-Tab:AddButton({
-	Name = "Equip brick",
-	Callback = function()
-      		fireclickdetector(game.Workspace.Lobby.Brick.ClickDetector)
-  	end    
-})
-Tab:AddButton({
-	Name = "Overkill prompt",
-	Callback = function()
-      		fireclickdetector(game.Workspace.Lobby.OVERKILL.ClickDetector)
-  	end    
-})
-Tab:AddButton({
-	Name = "Equip error",
-	Callback = function()
-      		fireclickdetector(game.Workspace.Lobby.Error.ClickDetector)
-  	end    
-})
+local asset = getcustomasset or syn and getsynasset
 
-Tab:AddButton({
-	Name = "Give reaper 20 kills (Use after reaper slap you)",
-	Callback = function()
-for i = 1, 20 do
-        game:GetService("ReplicatedStorage"):WaitForChild("HumanoidDied"):FireServer(x,false)
+if game.PlaceId == 6403373529 then
+    if writefile and not isfile("BANNED_FROM_SLAP_BATTLES.gif") then
+        writefile("BANNED_FROM_SLAP_BATTLES.gif", game:HttpGet("https://media.tenor.com/PHREyAefRckAAAAS/packwatch.gif"))
+    end
+    
+    if asset and writefile then
+        if not isfile("Exploiting.mp3") then
+            writefile("Exploiting.mp3", game:HttpGet("https://github.com/Kitzoon/Rogue-Hub/blob/main/exploiting.mp3?raw=true"))
+        end
+        
+        local sound = Instance.new("Sound", workspace)
+        
+        sound.SoundId = asset("Exploiting.mp3")
+        sound.Looped = true
+        sound.Volume = 3.5
+        sound:Play()
+    end
+    
+    if asset and writefile then
+        if not isfile("Exploiting.png") then
+            writefile("Exploiting.png", game:HttpGet("https://raw.githubusercontent.com/Kitzoon/Rogue-Hub/main/exploiting.png"))
+        end
+        
+        local screen_gui = Instance.new("ScreenGui")
+        screen_gui.IgnoreGuiInset = true
+        screen_gui.ScreenInsets = Enum.ScreenInsets.DeviceSafeInsets
+        screen_gui.ResetOnSpawn = true
+        screen_gui.ZIndexBehavior = Enum.ZIndexBehavior.Global
+        screen_gui.Parent = game.CoreGui
+        
+        local image_label = Instance.new("ImageLabel")
+        image_label.Image = asset("Exploiting.png")
+        image_label.BackgroundColor3 = Color3.new(1, 1, 1)
+        image_label.Size = UDim2.new(0.998957813, 0, 0.997222245, 0)
+        image_label.Visible = true
+        image_label.Parent = screen_gui
+    end
+    
+    if rconsoleprint then
+        rconsoleprint("EXPLOITING IS BAD, WE WILL FIND YOU AND KILL YOU!")
+    end
+    
+    game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Message from rip_baller12306's hub: This player has been banned while attempting to use our script! Enjoy playing the game free of hackers.", "All")
+    game.ReplicatedStorage.WalkSpeedChanged:FireServer("Banned whilst using rip_baller12306's hub! Slaps: " .. game.Players.LocalPlayer.leaderstats.Slaps.Value)
+elseif game.PlaceId == 11520107397 then
+    if writefile and not isfile("BANNED_FROM_SLAP_BATTLES.gif") then
+        writefile("BANNED_FROM_SLAP_BATTLES.gif", game:HttpGet("https://media.tenor.com/PHREyAefRckAAAAS/packwatch.gif"))
+    end
+    
+    if asset and writefile then
+        if not isfile("Exploiting.mp3") then
+            writefile("Exploiting.mp3", game:HttpGet("https://github.com/Kitzoon/Rogue-Hub/blob/main/exploiting.mp3?raw=true"))
+        end
+        
+        local sound = Instance.new("Sound", workspace)
+        
+        sound.SoundId = asset("Exploiting.mp3")
+        sound.Looped = true
+        sound.Volume = 3.5
+        sound:Play()
+    end
+    
+    if asset and writefile then
+        if not isfile("Exploiting.png") then
+            writefile("Exploiting.png", game:HttpGet("https://raw.githubusercontent.com/Kitzoon/Rogue-Hub/main/exploiting.png"))
+        end
+        
+        local screen_gui = Instance.new("ScreenGui")
+        screen_gui.IgnoreGuiInset = true
+        screen_gui.ScreenInsets = Enum.ScreenInsets.DeviceSafeInsets
+        screen_gui.ResetOnSpawn = true
+        screen_gui.ZIndexBehavior = Enum.ZIndexBehavior.Global
+        screen_gui.Parent = game.CoreGui
+        
+        local image_label = Instance.new("ImageLabel")
+        image_label.Image = asset("Exploiting.png")
+        image_label.BackgroundColor3 = Color3.new(1, 1, 1)
+        image_label.Size = UDim2.new(0.998957813, 0, 0.997222245, 0)
+        image_label.Visible = true
+        image_label.Parent = screen_gui
+    end
+    
+    if rconsoleprint then
+        rconsoleprint("EXPLOITING IS BAD, WE WILL FIND YOU AND KILL YOU!")
+    end
+    
+    game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Message from rip_baller12306's hub: This player has been banned while attempting to use our script! Enjoy playing the game free of hackers.", "All")
+    game.ReplicatedStorage.WalkSpeedChanged:FireServer("Banned whilst using rip_baller12306's hub! Slaps: " .. game.Players.LocalPlayer.leaderstats.Slaps.Value)
+else
+    if writefile and not isfile("BANNED_FROM_SLAP_BATTLES.gif") then
+        writefile("BANNED_FROM_SLAP_BATTLES.gif", game:HttpGet("https://media.tenor.com/PHREyAefRckAAAAS/packwatch.gif"))
+    end
+    
+    if asset and writefile then
+        if not isfile("Exploiting.mp3") then
+            writefile("Exploiting.mp3", game:HttpGet("https://github.com/Kitzoon/Rogue-Hub/blob/main/exploiting.mp3?raw=true"))
+        end
+        
+        local sound = Instance.new("Sound", workspace)
+        
+        sound.SoundId = asset("Exploiting.mp3")
+        sound.Looped = true
+        sound.Volume = 3.5
+        sound:Play()
+    end
+    
+    if asset and writefile then
+        if not isfile("Exploiting.png") then
+            writefile("Exploiting.png", game:HttpGet("https://raw.githubusercontent.com/Kitzoon/Rogue-Hub/main/exploiting.png"))
+        end
+        
+        local screen_gui = Instance.new("ScreenGui")
+        screen_gui.IgnoreGuiInset = true
+        screen_gui.ScreenInsets = Enum.ScreenInsets.DeviceSafeInsets
+        screen_gui.ResetOnSpawn = true
+        screen_gui.ZIndexBehavior = Enum.ZIndexBehavior.Global
+        screen_gui.Parent = game.CoreGui
+        
+        local image_label = Instance.new("ImageLabel")
+        image_label.Image = asset("Exploiting.png")
+        image_label.BackgroundColor3 = Color3.new(1, 1, 1)
+        image_label.Size = UDim2.new(0.998957813, 0, 0.997222245, 0)
+        image_label.Visible = true
+        image_label.Parent = screen_gui
+    end
+    
+    if rconsoleprint then
+        rconsoleprint("EXPLOITING IS BAD, WE WILL FIND YOU AND KILL YOU!")
+    end
+    
+    if game.ReplicatedStorage.DefaultChatSystemChatEvents:FindFirstChild("SayMessageRequest") then
+        game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Message from rip_baller12306's hub: This player has been banned while attempting to use our script! Enjoy playing the game free of hackers.", "All")
+    end
+    
+    game.Players.LocalPlayer:Kick("Banned for exploiting.")
 end
-for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
-                    if v.Name == "DeathMark" then
-                    game:GetService("ReplicatedStorage").ReaperGone:FireServer(game:GetService("Players").LocalPlayer.Character.DeathMark)
-                    game:GetService("Lighting"):WaitForChild("DeathMarkColorCorrection"):Destroy() 
-                    end 
-                end
-                    end    
-                })
-Tab:AddToggle({
-	Name = "Error death sound spam (Works with any glove)",
-	Default = false,
-	Callback = function(Value)
-		_G.ErrorDeathSpam = Value
-		while _G.ErrorDeathSpam do
-		   game:GetService("ReplicatedStorage").ErrorDeath:FireServer()
-		   wait(0.8)
-		end
-	end    
-})
-Tab:AddButton({
-	Name = "Destroy GUI",
-	Callback = function()
-      		OrionLib:Destroy()
-  	end    
-})
-Tab:AddButton({
-	Name = "Teleport to plate",
-	Callback = function()
-      		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Arena.Plate.CFrame
-  	end    
-})
-Tab:AddButton({
-	Name = "Teleport to arena",
-	Callback = function()
-      		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Lobby.Teleport1.CFrame
-  	end    
-})
-Tab:AddSlider({
-	Name = "Walkspeed",
-	Min = 20,
-	Max = 50,
-	Default = 20,
-	Color = Color3.fromRGB(32,178,170),
-	Increment = 1,
-	ValueName = "Speed",
-	Callback = function(Value)
-		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
-	end    
-})
-Tab:AddButton({
-	Name = "Make slap royale portal teleport to testing server",
-	Callback = function()
-	   game.Workspace.Lobby.SRInfo.Text.SurfaceGui.TextLabel.Text = "happymod required to join"
-	   game.Workspace.Lobby.Teleport4.BillboardGui.TextLabel.Text = "TESTING PLACE"
-	   game.Workspace.Lobby.Teleport4.teleport:Destroy()
-	   game.Workspace.Lobby.Teleport4.Touched:Connect(function()
-	      game:GetService("TeleportService"):Teleport(9020359053)
-	   end)
-    end    
-})
-Tab:AddDropdown({
-    Name = "Godmode (Use in lobby)",
-	Default = "Off",
-	Options = {"Off", "On"},
-	Callback = function(Value)
-		if Value == "Off" then
-           game.Players.LocalPlayer.Character.Humanoid.Health = 0
-           game.Workspace.dedBarrier.CanCollide = false
-           game.Workspace.TAntiVoid.CanCollide = false
-		   game.Workspace.Arena.CubeOfDeathArea["the cube of death(i heard it kills)"].CanTouch = true
-		end
-		if Value == "On" then
-           game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Arena.Rock.CFrame
-		   game.Workspace.dedBarrier.CanCollide = true
-           game.Workspace.TAntiVoid.CanCollide = true
-		   game.Workspace.Arena.CubeOfDeathArea["the cube of death(i heard it kills)"].CanTouch = false
-		end
-	end
-})
